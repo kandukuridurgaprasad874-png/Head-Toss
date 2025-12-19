@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heads or Tails</title>
+
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        button{
+            padding: 10px 20px;
+            background-color: #d31c92;
+            color: white;
+            border-radius: 4px;
+            border: 1px solid #d31c92;
+            font-size: x-large;
+            cursor: pointer;
+        }
+
+        img{
+            height: 50vh;
+            margin: 2vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Heads or Tails</h1>
+    <h3>Flip a virtual coin with this online and free app.</h3>
+
+    <!-- COUNT DISPLAY -->
+    <span id="count">Head: 0 &nbsp;&nbsp; Tail: 0</span>
+
+    <!-- COIN IMAGE -->
+    <img id="coin"
+         src="https://flipsimu.com/static/coin-image-big-b4e8096a3ec8ecc2b96d5998f19bda6c.png"
+         alt="coin">
+
+    <button onclick="Toss()">Flip the Coin!</button>
+
+    <script>
+        let head_count = 0;
+        let tail_count = 0;
+
+        function Toss() {
+            const image_ele = document.getElementById("coin");
+            const span_ele = document.getElementById("count");
+
+            // Random 0 or 1
+            const randomnum = Math.floor(Math.random() * 2);
+
+            if (randomnum === 0) {
+                head_count++;
+                image_ele.src =
+                    "https://flipsimu.com/static/coin-image-big-b4e8096a3ec8ecc2b96d5998f19bda6c.png";
+            } else {
+                tail_count++;
+                image_ele.src =
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmbOy7zOrPRa8CvMtA9T6kkcXR3Ox8BKLfBoKDKt3M4g&s";
+            }
+
+            // Update count
+            span_ele.innerHTML = `Head: ${head_count} &nbsp;&nbsp; Tail: ${tail_count}`;
+        }
+    </script>
+
+</body>
+</html>
